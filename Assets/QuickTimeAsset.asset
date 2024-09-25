@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139177a36b35384408653054966ae22f, type: 3}
   m_Name: QuickTimeAsset
   m_EditorClassIdentifier: 
-  Time: 0
-  KeyCode: 0
+  Time: 3
+  KeyCode: 102
