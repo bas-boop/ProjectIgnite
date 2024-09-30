@@ -6,7 +6,7 @@ namespace Player
 {
     public sealed class Movement : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D rigidbody2D;
+        [SerializeField] private new Rigidbody2D rigidbody2D;
         [SerializeField] private float speed = 3;
 
         private void Awake()
