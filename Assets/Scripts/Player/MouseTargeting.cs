@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class MouseTargeting : MonoBehaviour
 {
-    public GameObject targetIndicator;
-    private bool isTargetMode = false;
+    [SerializeField] private GameObject targetIndicator;
 
-    void Start()
+    private Camera mainCam;
+    private bool isTargetMode;
+
+    private void Start()
     {
+        mainCam = Camera.main;
         targetIndicator.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -18,16 +21,14 @@ public class MouseTargeting : MonoBehaviour
             targetIndicator.SetActive(isTargetMode);
         }
 
-        if (isTargetMode)
-        {
+        if (isTargetMode) 
             TrackMousePosition();
-        }
     }
 
-    void TrackMousePosition()
+    private void TrackMousePosition()
     {
         Vector3 mouseScreenPosition = Input.mousePosition;
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        Vector3 mouseWorldPosition = mainCam.ScreenToWorldPoint(mouseScreenPosition);
         mouseWorldPosition.z = 0f; 
 
         targetIndicator.transform.position = mouseWorldPosition;
