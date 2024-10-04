@@ -28,7 +28,7 @@ namespace Environment
                 || !Input.GetKeyDown(KeyCode.E))
                 return;
 
-            Yes();
+            BeDestroyed();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -49,7 +49,7 @@ namespace Environment
             onPlayerExit?.Invoke();
         }
 
-        private void Yes()
+        private void BeDestroyed()
         {
             foreach (Rigidbody2D rb in childSquares)
             {
