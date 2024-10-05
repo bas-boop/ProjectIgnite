@@ -1,29 +1,35 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 using Framework.Attributes;
 
 namespace Environment
 {
-    public sealed class Gun : MonoBehaviour
+    public sealed class Weapon : MonoBehaviour
     {
         [SerializeField, Tag] private string playerTag;
+        [SerializeField, Range(1, 100)] private float shootForce = 10f;
         [SerializeField, RangeVector2(-360, 360, -3600, 360)] private Vector2 angle = new (-45, 45);
         [SerializeField] private GameObject e;
         [SerializeField] private List<Rigidbody2D> childSquares = new ();
 
-        [SerializeField] private UnityEvent onPlayerEnter;
-        [SerializeField] private UnityEvent onPlayerExit;
-
-        private bool _isDestroyed;
-        private bool _canInteract;
+        public bool IsDestroyed { get; private set; }
         
-        public float shootForce = 10f;
+        [SerializeField] private UnityEvent onPlayerEnter = new();
+        [SerializeField] private UnityEvent onPlayerExit = new();
+        [SerializeField] private UnityEvent onDestroy = new();
+
+        private Collider2D _collider;
+        
+        private bool _canInteract;
+
+        private void Awake() => _collider = GetComponent<Collider2D>();
 
         private void Update()
         {
-            if (_isDestroyed
+            if (IsDestroyed
                 || !_canInteract
                 || !Input.GetKeyDown(KeyCode.E))
                 return;
@@ -60,9 +66,10 @@ namespace Environment
                 rb.AddForce(direction * shootForce, ForceMode2D.Impulse);
             }
 
-            _isDestroyed = true;
+            _collider.enabled = false;
+            IsDestroyed = true;
+            onDestroy?.Invoke();
             Destroy(e);
-            GetComponent<Collider2D>().enabled = false;
         }
     }
 }

@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadSceneInAwake: 1
-  sceneToLoad: Concept2
+  sceneToLoad: Gameplay
 --- !u!4 &1012702777
 Transform:
   m_ObjectHideFlags: 0
