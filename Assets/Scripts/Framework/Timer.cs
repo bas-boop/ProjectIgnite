@@ -8,10 +8,10 @@ namespace FrameWork
         private const int FULL_PERCENTAGE = 100;
 
         [SerializeField] private bool isCountingUp;
-        [SerializeField] private bool canCountOnAwake;
+        [SerializeField] private bool canCountOnStart;
         [SerializeField] private bool canCount;
-        [SerializeField] private float startingTime;
-        [SerializeField] private float timerThreshold;
+        [SerializeField, Tooltip("Time in seconds to count down form.")] private float startingTime;
+        [SerializeField, Tooltip("Time in seconds to count up to.")] private float timerThreshold;
 
         private float _currentTimer;
         private bool _isStarting;
@@ -25,7 +25,15 @@ namespace FrameWork
 
         #endregion
 
-        private void Awake() => SetCanCount(canCountOnAwake);
+        private void Start()
+        {
+            if (canCountOnStart)
+                _currentTimer = isCountingUp 
+                    ? timerThreshold 
+                    : startingTime;
+            
+            SetCanCount(canCountOnStart);
+        }
 
         private void Update() => Counting();
 
@@ -46,16 +54,16 @@ namespace FrameWork
         public void SetCanCount(bool target) => canCount = target;
 
         /// <summary>
-        /// Set the timer lenght, when resetting it will use this number.
+        /// Set the timer length, when resetting it will use this number.
         /// </summary>
         /// <param name="target">The target amount for the timer</param>
-        public void SetTimerLenght(float target) => _currentTimer = target;
+        public void SetTimerLength(float target) => _currentTimer = target;
 
         /// <summary>
-        /// Get the timer it's current lenght.
+        /// Get the timer it's current length.
         /// </summary>
-        /// <returns>The current timer lenght</returns>
-        public float GetCurrentTimerLenght() => _currentTimer;
+        /// <returns>The current timer length</returns>
+        public float GetCurrentTimerLength() => _currentTimer;
 
         /// <summary>
         /// Calculates the percentage of the current timer relative to the progress.

@@ -8,6 +8,7 @@ namespace Framework
     {
         private const double ASYNC_CONVERTER = 0.9;
         
+        [SerializeField] private bool isSingleton;
         [SerializeField] private bool loadSceneInAwake;
         [SerializeField] private string sceneToLoad;
 
@@ -15,7 +16,8 @@ namespace Framework
 
         private new void Awake()
         {
-            base.Awake();
+            if (isSingleton)
+                base.Awake();
             
             if (loadSceneInAwake)
                 LoadScene();
