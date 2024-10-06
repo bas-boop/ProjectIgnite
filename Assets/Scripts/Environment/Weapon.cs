@@ -12,7 +12,8 @@ namespace Environment
         [SerializeField, Tag] private string playerTag;
         [SerializeField, Range(1, 100)] private float shootForce = 10f;
         [SerializeField, RangeVector2(-360, 360, -3600, 360)] private Vector2 angle = new (-45, 45);
-        [SerializeField] private GameObject e;
+        [SerializeField] private GameObject interactVisualKeyboard;
+        [SerializeField] private GameObject interactVisualConsole;
         [SerializeField] private List<Rigidbody2D> childSquares = new ();
 
         public bool IsDestroyed { get; private set; }
@@ -26,16 +27,6 @@ namespace Environment
         private bool _canInteract;
 
         private void Awake() => _collider = GetComponent<Collider2D>();
-
-        private void Update()
-        {
-            if (IsDestroyed
-                || !_canInteract
-                || !Input.GetKeyDown(KeyCode.E))
-                return;
-
-            BeDestroyed();
-        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -55,6 +46,15 @@ namespace Environment
             onPlayerExit?.Invoke();
         }
 
+        public void Interact()
+        {
+            if (IsDestroyed
+                || !_canInteract)
+                return;
+
+            BeDestroyed();
+        }
+        
         private void BeDestroyed()
         {
             foreach (Rigidbody2D rb in childSquares)
@@ -69,7 +69,8 @@ namespace Environment
             _collider.enabled = false;
             IsDestroyed = true;
             onDestroy?.Invoke();
-            Destroy(e);
+            Destroy(interactVisualKeyboard);
+            Destroy(interactVisualConsole);
         }
     }
 }

@@ -838,8 +838,9 @@ GameObject:
   - component: {fileID: 262512559}
   - component: {fileID: 262512554}
   - component: {fileID: 262512553}
-  - component: {fileID: 262512557}
   - component: {fileID: 262512558}
+  - component: {fileID: 262512557}
+  - component: {fileID: 262512560}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1015,6 +1016,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneSwitcher: {fileID: 1478391580}
+  interacter: {fileID: 262512560}
+  interactRange: 4
 --- !u!114 &262512559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,6 +1048,23 @@ MonoBehaviour:
   m_DefaultActionMap: Action map
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &262512560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262512552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f03ba958616485587d86075b6e948d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 6975088051481248866}
+  - {fileID: 2044372430}
+  - {fileID: 113212585}
+  - {fileID: 241525490}
 --- !u!1 &304860918
 GameObject:
   m_ObjectHideFlags: 0
@@ -6288,6 +6308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ae47ac66e54e8fba1ae9ed38d94ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSingleton: 0
   loadSceneInAwake: 0
   sceneToLoad: Gameplay
 --- !u!4 &1478391581

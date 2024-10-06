@@ -9,6 +9,11 @@ namespace Player
     public sealed class InputParser : MonoBehaviour
     {
         [SerializeField] private SceneSwitcher sceneSwitcher;
+        [SerializeField] private Interacter interacter;
+
+        [SerializeField, Range(0, 25)] private float interactRange = 1;
+
+        private Movement _movement;
         
         private PlayerInput _playerInput;
         private InputActionAsset _inputActionAsset;
@@ -18,14 +23,27 @@ namespace Player
             GetReferences();
             Init();
         }
+        
+        private void FixedUpdate()
+        {
+            Vector2 moveInput = _inputActionAsset["Move"].ReadValue<Vector2>();
+            _movement.Move(moveInput);
+        }
 
         private void OnEnable() => AddListeners();
 
         private void OnDisable() => RemoveListeners();
         
-        private void GetReferences() => _playerInput = GetComponent<PlayerInput>();
+        private void GetReferences()
+        {
+            _playerInput = GetComponent<PlayerInput>();
+            _movement = GetComponent<Movement>();
+        }
 
-        private void Init() => _inputActionAsset = _playerInput.actions;
+        private void Init()
+        {
+            _inputActionAsset = _playerInput.actions;
+        }
 
         private void AddListeners()
         {
@@ -38,10 +56,10 @@ namespace Player
             _inputActionAsset["Interact"].performed -= Interact;
             _inputActionAsset["ResetLevel"].performed -= ResetLevel;
         }
-
+        
         #region Context
 
-        private void Interact(InputAction.CallbackContext context) => Debug.Log("Interact");
+        private void Interact(InputAction.CallbackContext context) => interacter.CheckInteraction(interactRange);
         
         private void ResetLevel(InputAction.CallbackContext context) => sceneSwitcher.LoadScene();
 

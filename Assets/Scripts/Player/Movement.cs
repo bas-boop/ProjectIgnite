@@ -15,21 +15,18 @@ namespace Player
                 rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
-        private void Update()
+        public void Move(Vector2 input)
         {
-            float input = Input.GetAxisRaw("Horizontal");
-
-            if (input != 0)
+            if (input.x != 0)
             {
-                Vector2 targetScale = Vector2.one;
-                targetScale.x = input;
-                transform.localScale = targetScale;
+                float scaleX = input.x > 0 ? 1 : -1;
+                transform.localScale = new (scaleX, transform.localScale.y, transform.localScale.z);
             }
             
-            float yesSpeed = speed * input;
-            
+            float speedDirection = speed * input.x;
             Vector2 targetVelocity = rigidbody2D.velocity;
-            targetVelocity.SetX(yesSpeed);
+            
+            targetVelocity.SetX(speedDirection);
             rigidbody2D.velocity = targetVelocity;
         }
     }
