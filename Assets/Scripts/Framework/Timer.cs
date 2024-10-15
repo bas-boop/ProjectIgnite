@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace FrameWork
+namespace Framework
 {
     public sealed class Timer : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-using FrameWork;
+using Framework;
 
 namespace Editor.Drawers
 {
