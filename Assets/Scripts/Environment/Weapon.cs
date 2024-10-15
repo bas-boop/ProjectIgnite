@@ -12,8 +12,7 @@ namespace Environment
         [SerializeField, Tag] private string playerTag;
         [SerializeField, Range(1, 100)] private float shootForce = 10f;
         [SerializeField, RangeVector2(-360, 360, -3600, 360)] private Vector2 angle = new (-45, 45);
-        [SerializeField] private GameObject interactVisualKeyboard;
-        [SerializeField] private GameObject interactVisualConsole;
+        [SerializeField] private GameObject interactVisual;
         [SerializeField] private List<Rigidbody2D> childSquares = new ();
 
         public bool IsDestroyed { get; private set; }
@@ -69,8 +68,7 @@ namespace Environment
             _collider.enabled = false;
             IsDestroyed = true;
             onDestroy?.Invoke();
-            Destroy(interactVisualKeyboard);
-            Destroy(interactVisualConsole);
+            Destroy(interactVisual);
         }
     }
 }
