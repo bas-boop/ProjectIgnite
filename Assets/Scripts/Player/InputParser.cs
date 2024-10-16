@@ -14,7 +14,8 @@ namespace Player
         [SerializeField, Range(0, 25)] private float interactRange = 1;
 
         private Movement _movement;
-        
+
+        private Camera _mainCam;
         private PlayerInput _playerInput;
         private InputActionAsset _inputActionAsset;
         
@@ -34,8 +35,16 @@ namespace Player
 
         private void OnDisable() => RemoveListeners();
         
+        public Vector2 GetMousePos()
+        {
+            Vector2 mousePos = _inputActionAsset["MousePosition"].ReadValue<Vector2>();
+            return _mainCam.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
+        }
+        
         private void GetReferences()
         {
+            _mainCam = Camera.main;
+            
             _playerInput = GetComponent<PlayerInput>();
             _movement = GetComponent<Movement>();
         }
