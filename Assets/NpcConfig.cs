@@ -1,14 +1,15 @@
 using UnityEngine;
+
 using static NpcSystem.NpcTypes;
 
 namespace NpcSystem
 {
-    public class NpcConfig : MonoBehaviour
+    sealed class NpcConfig : MonoBehaviour
     {
-        [SerializeField] private GameObject WeaponPrefab;
-        [SerializeField] private Transform WeaponSpawnLocation;
-        [SerializeField] private GameObject[] characters; 
-        [SerializeField] private Transform charactersSpawn;
+        [SerializeField , Tooltip("prefab for the weapon")] private GameObject WeaponPrefab;
+        [SerializeField, Tooltip("position for the weapon to spawn")] private Transform WeaponSpawnLocation;
+        [SerializeField , Tooltip("prefabs of the implemented animated characters")] private GameObject[] characters; 
+        [SerializeField , Tooltip("location for the animated character to spanw(NOT world position)")] private Transform charactersSpawn;
         
         //<summary>
         //set everything before the character spawns
@@ -16,7 +17,7 @@ namespace NpcSystem
         //<param name ="type"> will pass what kind of character will be spawned</param>
         public void SetNpc(NpcType type)
         {
-            //set skin once assets implemented
+            Debug.LogWarning("skins not yet implemented");
             if (type == NpcType.Armed) 
             {
                 Instantiate(WeaponPrefab, WeaponSpawnLocation.position, Quaternion.identity, WeaponSpawnLocation);
