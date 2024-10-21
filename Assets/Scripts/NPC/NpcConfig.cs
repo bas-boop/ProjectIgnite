@@ -15,7 +15,6 @@ namespace NpcSystem
             {
                 Debug.LogWarning("skins not yet implemented");
             }
-            SetNpc(NpcType.Armed);
         }
 
         //<summary>

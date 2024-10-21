@@ -7,10 +7,6 @@ public class WeaponTimer : MonoBehaviour
     private float timer;
     private float currentTime;
 
-    private void Start()
-    {
-        SetTimer(10f);
-    }
     public void SetTimer(float ammount)
     {
         timer = ammount;
@@ -26,7 +22,7 @@ public class WeaponTimer : MonoBehaviour
         }
         else
         {
-            print("the timer ran out");
+            Debug.Log("the timer ran out");
         }
     }
 }
