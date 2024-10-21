@@ -1,11 +1,15 @@
-﻿using Framework.Extensions;
-using UnityEngine;
+﻿using UnityEngine;
+
+using Framework.Attributes;
+using Framework.Extensions;
 
 namespace Framework.Gameplay.MiniGames
 {
     public class DraggableObject : MonoBehaviour
     {
         [SerializeField] private MiniGameSystem miniGameSystem;
+        [SerializeField] private float detectionSize = 1;
+        [SerializeField, Tag] private string placementTag;
         
         private bool _canBeDragged;
         private bool _isBeingDragged;
@@ -32,6 +36,24 @@ namespace Framework.Gameplay.MiniGames
         {
             if (_canBeDragged)
                 _isBeingDragged = !_isBeingDragged;
+            
+            if (!_isBeingDragged)
+                PlaceOnHolder();
+        }
+
+        private void PlaceOnHolder()
+        {
+            Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, detectionSize);
+
+            foreach (Collider2D obj in objects)
+            {
+                if (!obj.CompareTag(placementTag))
+                    continue;
+
+                DragObjectPlacement placement = obj.GetComponent<DragObjectPlacement>();
+                placement.SetCurrentItem(this);
+                break;
+            }
         }
     }
 }
