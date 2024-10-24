@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Direction: 2
   m_MinValue: 0
   m_MaxValue: 1
-  m_WholeNumbers: 1
-  m_Value: 1
+  m_WholeNumbers: 0
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1202,7 +1202,8 @@ GameObject:
   - component: {fileID: 9113038731820305056}
   - component: {fileID: 8958027054658582590}
   - component: {fileID: 4586546694808920373}
-  - component: {fileID: 7299417869691155551}
+  - component: {fileID: 403766156758952610}
+  - component: {fileID: 6748501594086848497}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -1353,7 +1354,48 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4
---- !u!114 &7299417869691155551
+--- !u!114 &403766156758952610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052505655134219975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6ec084fe204e7f8a39f4a06d0c5790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCountingUp: 1
+  canCountOnStart: 0
+  canCount: 0
+  startingTime: 0
+  timerThreshold: 0
+  onTimerDone:
+    m_PersistentCalls:
+      m_Calls: []
+  onTimerPassedThreshold:
+    m_PersistentCalls:
+      m_Calls: []
+  onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6748501594086848497}
+        m_TargetAssemblyTypeName: WeaponUIHandler, Assembly-CSharp
+        m_MethodName: SetSliderValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6748501594086848497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

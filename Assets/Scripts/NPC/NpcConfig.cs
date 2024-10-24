@@ -1,4 +1,5 @@
 using UnityEngine;
+using Framework;
 
 namespace NpcSystem
 {
@@ -6,14 +7,16 @@ namespace NpcSystem
     {
         [SerializeField] private GameObject WeaponPrefab;
         [SerializeField] private Transform WeaponSpawnLocation;
-        [SerializeField , Tooltip("prefabs of the implemented animated characters")] private GameObject[] characters; 
-        [SerializeField , Tooltip("location for the animated character to spanw(NOT world position)")] private Transform charactersSpawn;
+        [SerializeField , Tooltip("Prefabs of the implemented animated characters")] private GameObject[] characters; 
+        [SerializeField , Tooltip("Location for the animated character to spanw(NOT world position)")] private Transform charactersSpawn;
+        [SerializeField,Tooltip("How long the player has to solve this puzzle")] private float solveTime ;
 
         private void Awake()
         {
+            SetNpc(NpcType.Armed);
             if (characters.Length == 0)
             {
-                Debug.LogWarning("skins not yet implemented");
+                Debug.LogWarning("Skins not yet implemented");
             }
         }
 
@@ -27,7 +30,9 @@ namespace NpcSystem
             {
                 case NpcType.Armed:
                 {
-                    Instantiate(WeaponPrefab, WeaponSpawnLocation.position, Quaternion.identity, WeaponSpawnLocation);
+                    GameObject weapon = Instantiate(WeaponPrefab, WeaponSpawnLocation.position, Quaternion.identity, WeaponSpawnLocation);
+                    Timer weaponTimer = weapon.GetComponentInChildren<Timer>();
+                    if (weaponTimer != null) weaponTimer.SetTimerTarget(solveTime);
                     break;
                 }       
             }   
