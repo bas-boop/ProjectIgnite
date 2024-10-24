@@ -1878,6 +1878,7 @@ MonoBehaviour:
   WeaponSpawnLocation: {fileID: 2648130328786149603}
   characters: []
   charactersSpawn: {fileID: 5025125302782423917}
+  solveTime: 80
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
