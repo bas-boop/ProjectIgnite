@@ -33,6 +33,7 @@ namespace Framework
                     : startingTime;
             
             SetCanCount(canCountOnStart);
+            _isStarting = true;
         }
 
         private void Update() => Counting();
@@ -58,6 +59,18 @@ namespace Framework
         /// </summary>
         /// <param name="target">The target amount for the timer</param>
         public void SetTimerLength(float target) => _currentTimer = target;
+
+        ///<summary>
+        ///Set the timer timerThreshold or startingTime of the timer
+        ///</summary>
+        /// <param name="target">this will be the new target the timer will count up or down to</param> 
+        public void SetTimerTarget(float target) => timerThreshold = isCountingUp ? target : startingTime = target;
+
+        ///<summary>
+        ///Get the value the timer is counting up or down to
+        /// </summary>
+        /// <returns>the current value the timer is counting up or down to</returns>
+        public float GetTimerTarget() => timerThreshold;
 
         /// <summary>
         /// Get the timer it's current length.
