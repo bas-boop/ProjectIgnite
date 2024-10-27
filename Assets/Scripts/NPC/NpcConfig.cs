@@ -3,17 +3,17 @@ using Framework;
 
 namespace NpcSystem
 {
-    sealed class NpcConfig : MonoBehaviour
+    public sealed class NpcConfig : MonoBehaviour
     {
         [SerializeField] private GameObject WeaponPrefab;
         [SerializeField] private Transform WeaponSpawnLocation;
         [SerializeField , Tooltip("Prefabs of the implemented animated characters")] private GameObject[] characters; 
         [SerializeField , Tooltip("Location for the animated character to spanw(NOT world position)")] private Transform charactersSpawn;
-        [SerializeField,Tooltip("How long the player has to solve this puzzle")] private float solveTime ;
+        [SerializeField,Tooltip("How long the player has to solve this puzzle")] private float solveTime;
+        [HideInInspector] public NpcType npcType;
 
         private void Awake()
         {
-            SetNpc(NpcType.Armed);
             if (characters.Length == 0)
             {
                 Debug.LogWarning("Skins not yet implemented");
@@ -26,6 +26,7 @@ namespace NpcSystem
         //<param name ="type"> will pass what kind of character will be spawned</param>
         public void SetNpc(NpcType type)
         {
+            npcType = type;
             switch (type)
             {
                 case NpcType.Armed:

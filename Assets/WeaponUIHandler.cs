@@ -21,7 +21,6 @@ public class WeaponUIHandler : MonoBehaviour
     public void SetSliderValues()
     {
         slider.maxValue = _weaponTimer.GetTimerTarget();
-        print(_weaponTimer.GetTimerTarget());
         canUpdateValues = true;
     }
 
