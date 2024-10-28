@@ -1137,8 +1137,8 @@ MonoBehaviour:
   spacing: 1
   startPoint: {x: -20.26, y: 0, z: 0}
   endPoint: {x: 26.46, y: 0, z: 0}
-  armedCharacters: 5
-  Debug: 1
+  armedCharacterAmount: 5
+  debugGizmos: 0
 --- !u!1 &672633867
 GameObject:
   m_ObjectHideFlags: 0

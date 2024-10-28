@@ -32,8 +32,7 @@ namespace NpcSystem
                 case NpcType.Armed:
                 {
                     GameObject weapon = Instantiate(WeaponPrefab, WeaponSpawnLocation.position, Quaternion.identity, WeaponSpawnLocation);
-                    Timer weaponTimer = weapon.GetComponentInChildren<Timer>();
-                    if (weaponTimer != null) weaponTimer.SetTimerTarget(solveTime);
+                        Debug.LogWarning("weapon timer not set!");
                     break;
                 }       
             }   
