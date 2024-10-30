@@ -5,17 +5,18 @@ namespace NpcSystem.CrowdSystem
 {
     public sealed class CrowdSpawner : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private GameObject npcPrefab;
-        [SerializeField , Tooltip("The space between the characters")] private float spacing = 1.0f;
-        [SerializeField , Tooltip("A point to mark the start of the crowd")] private Vector3 startPoint;
-        [SerializeField , Tooltip("A Point to mark the end of the crowd")] private Vector3 endPoint;
+        [Header("References")]
+        [SerializeField, Tooltip("The space between the characters")] private float spacing = 1.0f;
+        [SerializeField, Tooltip("A point to mark the start of the crowd")] private Vector3 startPoint;
+        [SerializeField, Tooltip("A Point to mark the end of the crowd")] private Vector3 endPoint;
         [SerializeField, Tooltip("The ammount of armed characters that should spawn")] private int armedCharacterAmount;
+        [Header("Debug")]
         [SerializeField] private bool debugGizmos;
 
-        private void Start()
-        {
-            SpawnCrowd();   
-        }
+        private void Start() => SpawnCrowd(); 
+      
 
         /// <summary>
         /// Spawns the crowd in the scene and sets the npc's to the configured settings
@@ -30,7 +31,7 @@ namespace NpcSystem.CrowdSystem
             for (int i = 0; i < npcCount; i++)
             {
                 Vector3 spawnPosition = startPoint + direction * (i * (npcPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.x + spacing));
-                var character = Instantiate(npcPrefab, spawnPosition, Quaternion.identity);
+                var character = Instantiate(npcPrefab, spawnPosition, Quaternion.identity, transform);
                 var component = character.GetComponent<NpcConfig>();
                 npc.Add(component);
             }
@@ -49,14 +50,13 @@ namespace NpcSystem.CrowdSystem
             int randomIndex = Random.Range(0, npcConfigs.Count);
 
             if (npcConfigs[randomIndex].npcType != NpcType.Armed)
-            {
                 npcConfigs[randomIndex].SetNpc(NpcType.Armed);
-            }
         }
 
         private void OnDrawGizmos()
         {
-            if (debugGizmos)
+            if (!debugGizmos)
+                return;
             {
                 Gizmos.color = Color.green;
                 Gizmos.DrawSphere(startPoint, 0.1f); 

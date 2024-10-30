@@ -7,17 +7,15 @@ namespace NpcSystem
     {
         [SerializeField] private GameObject weaponPrefab;
         [SerializeField] private Transform weaponSpawnLocation;
-        [SerializeField , Tooltip("Prefabs of the implemented animated characters")] private GameObject[] characters; 
-        [SerializeField , Tooltip("Location for the animated character to spanw(NOT world position)")] private Transform charactersSpawn;
+        [SerializeField, Tooltip("Prefabs of the implemented animated characters")] private GameObject[] characters; 
+        [SerializeField, Tooltip("Location for the animated character to spanw(NOT world position)")] private Transform charactersSpawn;
         [SerializeField,Tooltip("How long the player has to solve this puzzle")] private float solveTime;
-        [HideInInspector] public NpcType npcType;
+        [HideInInspector] public NpcType npcType { get; private set;}
 
         private void Awake()
         {
             if (characters.Length == 0)
-            {
                 Debug.LogWarning("Skins not yet implemented");
-            }
         }
 
         //<summary>

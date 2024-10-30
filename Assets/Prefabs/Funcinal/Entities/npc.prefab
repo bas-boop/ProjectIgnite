@@ -46,12 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4b6e86a2efa9c4eba488114caea3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponPrefab: {fileID: 8777996587367826633, guid: 7a171cb0de6bc9c44b56679e9cca4b6b, type: 3}
-  WeaponSpawnLocation: {fileID: 7861927727369000282}
+  weaponPrefab: {fileID: 8777996587367826633, guid: 7a171cb0de6bc9c44b56679e9cca4b6b, type: 3}
+  weaponSpawnLocation: {fileID: 7861927727369000282}
   characters: []
   charactersSpawn: {fileID: 5736815355466114121}
   solveTime: 80
-  NpcType: 0
 --- !u!1 &4934109897521678792
 GameObject:
   m_ObjectHideFlags: 0
