@@ -14,7 +14,7 @@ namespace Framework
         [SerializeField, Tooltip("Time in seconds to count up to.")] private float timerThreshold;
 
         private float _currentTimer;
-        private bool _isStarting;
+        private bool _isStarting = true;
 
         #region Events
 
@@ -69,7 +69,11 @@ namespace Framework
         /// Calculates the percentage of the current timer relative to the progress.
         /// </summary>
         /// <returns>Return a number between 0-1</returns>
-        public float GetCurrentTimerPercentage() => _currentTimer / FULL_PERCENTAGE;
+        public float GetCurrentTimerPercentage()
+        {
+            float timerLimit = isCountingUp ? timerThreshold : startingTime;
+            return Mathf.Clamp01(_currentTimer / timerLimit);
+        }
 
         private void Counting()
         {
