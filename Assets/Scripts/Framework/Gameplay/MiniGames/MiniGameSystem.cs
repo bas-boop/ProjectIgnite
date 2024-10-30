@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-
-using Player;
 using UnityEngine.Events;
+
+using Framework.Gameplay.MiniGames.Objects;
+using Player;
 
 namespace Framework.Gameplay.MiniGames
 {
@@ -19,7 +20,7 @@ namespace Framework.Gameplay.MiniGames
 
         [Space, Header("Settings")]
         [SerializeField] private Rect miniGameBounds;
-        [SerializeField] private MinigameType type;
+        [SerializeField] private MiniGameType type;
 
         [Header("Scaling")]
         [SerializeField] private float speed = 1;
@@ -37,7 +38,7 @@ namespace Framework.Gameplay.MiniGames
             _size = transform.localScale;
             panel.transform.localScale = miniGameBounds.size;
 
-            if (type == MinigameType.SWAP_WEAPON
+            if (type == MiniGameType.SWAP_WEAPON
                 && paw == null)
                 throw new Exception(ERROR_NO_POW);
         }
@@ -50,7 +51,7 @@ namespace Framework.Gameplay.MiniGames
         {
             StartCoroutine(Scaling(true));
             
-            if (type == MinigameType.SWAP_WEAPON)
+            if (type == MiniGameType.SWAP_WEAPON)
                 PlayerInput.SetCurrentPaw(paw);
         }
 
@@ -58,7 +59,7 @@ namespace Framework.Gameplay.MiniGames
         {
             StartCoroutine(Scaling(false));
             
-            if (type == MinigameType.SWAP_WEAPON)
+            if (type == MiniGameType.SWAP_WEAPON)
                 PlayerInput.SetCurrentPaw(null);
         }
 

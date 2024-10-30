@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 using Framework.Extensions;
 
-namespace Framework.Gameplay.MiniGames
+namespace Framework.Gameplay.MiniGames.Objects
 {
     public sealed class DistanceObject : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Framework.Gameplay.MiniGames
+namespace Framework.Gameplay.MiniGames.Objects
 {
     public sealed class DragObjectPlacement : MonoBehaviour
     {

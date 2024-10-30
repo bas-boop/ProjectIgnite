@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 
 using Framework;
-using Framework.Gameplay.MiniGames;
+using Framework.Gameplay.MiniGames.Objects;
 
 namespace Player
 {

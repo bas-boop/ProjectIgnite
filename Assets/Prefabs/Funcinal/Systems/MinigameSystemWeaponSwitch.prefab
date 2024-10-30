@@ -434,6 +434,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7427496821351550981, guid: 0612874713da31f47b86ebe77827ba04, type: 3}
+      propertyPath: paw
+      value: 
+      objectReference: {fileID: 2194413162451524014}
+    - target: {fileID: 7427496821351550981, guid: 0612874713da31f47b86ebe77827ba04, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427496821351550981, guid: 0612874713da31f47b86ebe77827ba04, type: 3}
       propertyPath: currentMiniGame
       value: 
       objectReference: {fileID: 7052721894728123456}

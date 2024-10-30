@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-namespace Framework.Gameplay.MiniGames
+namespace Framework.Gameplay.MiniGames.Objects
 {
     public sealed class MovingPaw : MonoBehaviour
     {
         [SerializeField] private Vector2 direction = Vector2.one;
 
-        [SerializeField] private float forwardStep = 0.5f;
-        [SerializeField] private float backwardsSpeed = 0.5f;
-        [SerializeField] private float backwardLimit = -5f;
+        [SerializeField, Range(0, 5)] private float forwardStep = 0.5f;
+        [SerializeField, Range(0, 5)] private float backwardsSpeed = 0.5f;
+        [SerializeField, Range(-1, -15)] private float backwardLimit = -5f;
         
         private Vector3 _initialPosition;
         private bool _canMove = true;

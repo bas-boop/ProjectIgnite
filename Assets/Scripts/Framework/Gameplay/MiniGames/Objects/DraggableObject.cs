@@ -3,7 +3,7 @@
 using Framework.Attributes;
 using Framework.Extensions;
 
-namespace Framework.Gameplay.MiniGames
+namespace Framework.Gameplay.MiniGames.Objects
 {
     public class DraggableObject : MonoBehaviour
     {

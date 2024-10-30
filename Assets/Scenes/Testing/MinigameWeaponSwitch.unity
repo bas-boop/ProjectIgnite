@@ -122,17 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &10008319 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2194413162451524014, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-  m_PrefabInstance: {fileID: 5860355826679137562}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056839e21c974a1f8758addc4406ed81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &23927739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,49 +3116,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 1664272375}
     m_Modifications:
     - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: paw
-      value: 
-      objectReference: {fileID: 10008319}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
       propertyPath: <PlayerInput>k__BackingField
       value: 
       objectReference: {fileID: 262512558}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 262512552}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Framework.Gameplay.MiniGames.DistanceObject, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1989992116593805655, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
       propertyPath: m_Name
       value: MinigameSystemWeaponSwitch
