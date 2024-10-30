@@ -31,7 +31,6 @@ namespace Framework
                 _currentTimer = isCountingUp 
                     ? timerThreshold 
                     : startingTime;
-            
             SetCanCount(canCountOnStart);
         }
 
