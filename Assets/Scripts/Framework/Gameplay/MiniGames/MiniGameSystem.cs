@@ -25,6 +25,7 @@ namespace Framework.Gameplay.MiniGames
         
         [Space, Header("Settings")]
         [SerializeField] private MiniGameType type;
+        [SerializeField, Range(0, 5)] private float delayedCloseTime = 1;
         [SerializeField] private Rect miniGameBounds;
 
         [Header("Scaling")]
@@ -86,6 +87,8 @@ namespace Framework.Gameplay.MiniGames
             candy.transform.SetParent(weaponParent);
             weapon.transform.SetParent(candyParent);
         }
+
+        public void DelayedDeactivate() => Invoke(nameof(Deactivate), delayedCloseTime);
         
         private IEnumerator Scaling(bool shouldGrow)
         {
