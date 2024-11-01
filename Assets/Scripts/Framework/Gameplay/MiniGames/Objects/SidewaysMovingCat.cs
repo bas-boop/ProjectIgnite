@@ -1,44 +1,45 @@
-using Framework.Gameplay.MiniGames.Objects;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SidewaysMovingCat : MonoBehaviour
+namespace Framework.Gameplay.MiniGames.Objects
 {
-    [SerializeField] private float movementStep = 0.5f;
-    [SerializeField] private UnityEvent onMove = new();
-    [SerializeField] private UnityEvent onComplete = new();
+    public class SidewaysMovingCat : MonoBehaviour
+    {
+        [SerializeField , Range(0.5f , 2f)] private float movementStep = 0.5f;
+        [SerializeField, Tooltip("will be performed everytime the player decides to move")] private UnityEvent onMove = new();
+        [SerializeField] private UnityEvent onGoalReached = new();
+        [SerializeField] private Transform goalPosition;
 
-    private Vector3 _startPosition;
-    private bool _canMove;
+        private Vector3 _startPosition;
+        private bool _canMove;
 
-    private void Start()
-    {
-        _startPosition = transform.position;
-    }
+        private void Start() => _startPosition = transform.position;
 
-    public void OnReset()
-    {
-        transform.position = _startPosition;
-    }
-    public void ToggleMinigameActive(bool target)
-    {
-        _canMove = target;
-    }
-    public void PerformStep()
-    {
-        if (_canMove)
+        public void OnReset() => transform.position = _startPosition;
+
+        /// <summary>
+        /// will decide if you can move the object or not
+        /// </summary>
+        /// <param name="target"> the value the bool will be set to</param>
+        public void ToggleMinigameActive(bool target) => _canMove = target;
+
+        public void PerformStep()
         {
-            print("moving");
-            //todo:  fix movement en visual turning
-            //Vector3 nextStepPosition = new Vector3(transform.position.x - movementStep, transform.position.y , transform.position.z);
-            onMove?.Invoke();
+            if (_canMove)
+            {
+                Vector3 nextStepPosition = new Vector3(transform.position.x - movementStep, transform.position.y, transform.position.z);
+                transform.position = nextStepPosition;
+                onMove?.Invoke();
+                CheckIfGoalReached();
+            }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        TurningEnemy turningEnemy = collision.GetComponent<TurningEnemy>();
-        if (collision != null)
-            onComplete?.Invoke();       
+        public void CheckIfGoalReached()
+        {
+            if(transform.position.x <= goalPosition.position.x)
+            {
+                onGoalReached?.Invoke();
+            }
+        }
     }
 }

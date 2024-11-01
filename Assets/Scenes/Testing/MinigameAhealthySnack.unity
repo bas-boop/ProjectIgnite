@@ -564,11 +564,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!1 &322369546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7772263478221187953, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-  m_PrefabInstance: {fileID: 1021247180}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &347051595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1378,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1986276693}
         m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.Objects.TurningEnemy,
           Assembly-CSharp
-        m_MethodName: StartMinigame
+        m_MethodName: OnMiniGameActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1394,7 +1389,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 775779106}
-        m_TargetAssemblyTypeName: SidewaysMovingCat, Assembly-CSharp
+        m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.Objects.SidewaysMovingCat,
+          Assembly-CSharp
         m_MethodName: ToggleMinigameActive
         m_Mode: 6
         m_Arguments:
@@ -1672,135 +1668,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696025535}
   m_CullTransparentMesh: 1
---- !u!1 &775779103
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 775779104}
-  - component: {fileID: 775779105}
-  - component: {fileID: 775779106}
-  m_Layer: 0
-  m_Name: cucumba
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &775779104
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775779103}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.94, y: -1.46, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1021247181}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &775779105
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775779103}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 12
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &775779106
+--- !u!114 &775779106 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4577653718601414565, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
+  m_PrefabInstance: {fileID: 1021247180}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775779103}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad315914444d9641999325887d9378c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementStep: 0.5
-  onMove:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1986276693}
-        m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.Objects.TurningEnemy,
-          Assembly-CSharp
-        m_MethodName: CheckIsCaught
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1021247183}
-        m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.MiniGameSystem, Assembly-CSharp
-        m_MethodName: Deactivate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &796349773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,45 +1899,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1664272375}
     m_Modifications:
     - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: cucumber
-      value: 
-      objectReference: {fileID: 775779106}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: currentMiniGame
-      value: 
-      objectReference: {fileID: 1021247182}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
       propertyPath: <PlayerInput>k__BackingField
       value: 
       objectReference: {fileID: 262512558}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: onShrink.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 322369546}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: onGrow.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      propertyPath: onShrink.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1744339482597515860, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
       propertyPath: m_Name
       value: MinigameSystemHealthySnack
       objectReference: {fileID: 0}
+    - target: {fileID: 3286168573714754542, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1986276692}
     - target: {fileID: 4139135694953934553, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2104,21 +1954,13 @@ PrefabInstance:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 371493187}
+    - target: {fileID: 7082106124533296963, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnMinigameDeactivate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3825430705242329501, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-    - {fileID: 8990173082248832126, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-    - {fileID: 7141062366750728185, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-    - {fileID: 6071448679421840689, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-    - {fileID: 6701290026534708449, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-    - {fileID: 2597647875717406134, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4139135694953934553, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1986276691}
-    - targetCorrespondingSourceObject: {fileID: 4139135694953934553, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 775779104}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
 --- !u!4 &1021247181 stripped
@@ -2126,17 +1968,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4139135694953934553, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
   m_PrefabInstance: {fileID: 1021247180}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1021247182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7082106124533296963, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
-  m_PrefabInstance: {fileID: 1021247180}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322369546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68412fc4f86b447198c231e3f0c7f1ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1021247183 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1351132255780209696, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
@@ -2257,7 +2088,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1986276693}
         m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.Objects.TurningEnemy,
           Assembly-CSharp
-        m_MethodName: StopMinigame
+        m_MethodName: OnMinigameDeactivate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2268,7 +2099,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 775779106}
-        m_TargetAssemblyTypeName: SidewaysMovingCat, Assembly-CSharp
+        m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.Objects.SidewaysMovingCat,
+          Assembly-CSharp
         m_MethodName: ToggleMinigameActive
         m_Mode: 6
         m_Arguments:
@@ -2555,175 +2387,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4beab5d99646b3bc27f3cffc8fd29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1986276690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1986276691}
-  - component: {fileID: 1986276692}
-  - component: {fileID: 1986276693}
-  - component: {fileID: 1986276694}
-  m_Layer: 0
-  m_Name: AngryPerson
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1986276691
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986276690}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.66, y: -0.7751, z: 0}
-  m_LocalScale: {x: 1, y: 2.3625073, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1021247181}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1986276692
+--- !u!212 &1986276692 stripped
 SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1346544884063724440, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
+  m_PrefabInstance: {fileID: 1021247180}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986276690}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 12
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &1986276693
+--- !u!114 &1986276693 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3286168573714754542, guid: 3052a9eff8f8a0049a2b2767edce9041, type: 3}
+  m_PrefabInstance: {fileID: 1021247180}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986276690}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf52b4eeb35f034cb0523fb256c7a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCaught:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 775779106}
-        m_TargetAssemblyTypeName: SidewaysMovingCat, Assembly-CSharp
-        m_MethodName: OnReset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1021247183}
-        m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.MiniGameSystem, Assembly-CSharp
-        m_MethodName: Deactivate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  minigameActive: 0
-  _isWatching: 0
---- !u!114 &1986276694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986276690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6ec084fe204e7f8a39f4a06d0c5790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCountingUp: 0
-  canCountOnStart: 0
-  canCount: 0
-  startingTime: 0
-  timerThreshold: 0
-  onTimerDone:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1986276693}
-        m_TargetAssemblyTypeName: Framework.Gameplay.MiniGames.Objects.TurningEnemy,
-          Assembly-CSharp
-        m_MethodName: RoundBehaviour
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onTimerPassedThreshold:
-    m_PersistentCalls:
-      m_Calls: []
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onReset:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2000673527
 GameObject:
   m_ObjectHideFlags: 0

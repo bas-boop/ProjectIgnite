@@ -26,7 +26,6 @@ namespace Framework.Gameplay.MiniGames
         [Header("Cucumber references")]
         [SerializeField] SidewaysMovingCat cucumber;
 
-
         [Space, Header("Settings")]
         [SerializeField] private MiniGameType type;
         [SerializeField] private Rect miniGameBounds;
@@ -115,5 +114,7 @@ namespace Framework.Gameplay.MiniGames
             UnityEvent onDoneScaling = shouldGrow ? onGrow : onShrink;
             onDoneScaling.Invoke();
         }
+
+        public void OnComplete() => currentMiniGame.Complete();
     }
 }

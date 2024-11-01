@@ -1,5 +1,6 @@
 using UnityEngine.Events;
 using UnityEngine;
+using TMPro;
 
 namespace Framework.Gameplay.MiniGames.Objects
 {
@@ -7,24 +8,24 @@ namespace Framework.Gameplay.MiniGames.Objects
     {
         [SerializeField] private UnityEvent onCaught = new();
         [HideInInspector] public bool minigameActive;
-        private float _lookInterval;
         [SerializeField] private bool _isWatching;
+        private SpriteRenderer _spriteRenderer; //temporary until art implementation
+        private float _lookInterval;
         private Timer timer;
 
-        private void Start()
+        private void Start() 
         {
-            timer = GetComponent<Timer>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            timer = GetComponent<Timer>(); 
         }
 
-        public void StartMinigame()
+        public void OnMiniGameActive()
         {
             minigameActive = true;
             SetTimer();
-            timer.SetTimerTarget(_lookInterval);
-            timer.SetCanCount(true);
         }
 
-        public void StopMinigame()
+        public void OnMinigameDeactivate()
         {
             minigameActive = false;
             timer.SetCanCount(false);
@@ -35,13 +36,26 @@ namespace Framework.Gameplay.MiniGames.Objects
             timer.ResetTimer();
             Turn();
             SetTimer();
+        }
+
+        /// <summary>
+        /// shows when the character is turned.( the color is temporary until art implementation)
+        /// </summary>
+        private void Turn()
+        {
+            _isWatching = !_isWatching;
+            if (_isWatching )
+                _spriteRenderer.color = Color.red;
+            else
+                _spriteRenderer.color = Color.green;
+        }
+
+        private void SetTimer()
+        {
+            _lookInterval = Random.Range(2, 4);
             timer.SetTimerTarget(_lookInterval);
             timer.SetCanCount(true);
         }
-
-        private void Turn() => _isWatching = !_isWatching;
-
-        private void SetTimer() => _lookInterval = Random.Range(2, 4);
 
         public void CheckIsCaught()
         {
