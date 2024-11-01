@@ -22,7 +22,11 @@ namespace Framework.Gameplay.MiniGames
         [SerializeField] private GameObject candy;
         [SerializeField] private GameObject weapon;
         [SerializeField] private Vector2 weaponOffset;
-        
+
+        [Header("Cucumber references")]
+        [SerializeField] SidewaysMovingCat cucumber;
+
+
         [Space, Header("Settings")]
         [SerializeField] private MiniGameType type;
         [SerializeField] private Rect miniGameBounds;
@@ -59,6 +63,8 @@ namespace Framework.Gameplay.MiniGames
             
             if (type == MiniGameType.SWAP_WEAPON)
                 PlayerInput.SetCurrentPaw(paw);
+            else if(type == MiniGameType.CUCUMBER)
+                PlayerInput.SetCurrentCucumber(cucumber);
         }
 
         public void Deactivate()
@@ -67,6 +73,8 @@ namespace Framework.Gameplay.MiniGames
             
             if (type == MiniGameType.SWAP_WEAPON)
                 PlayerInput.SetCurrentPaw(null);
+            if (type == MiniGameType.CUCUMBER)
+                PlayerInput.SetCurrentCucumber(null);
         }
 
         public void SwapWeaponWitchCandy()
