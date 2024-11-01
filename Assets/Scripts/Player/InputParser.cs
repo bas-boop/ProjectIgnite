@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 
 using Framework;
+using Framework.Gameplay.MiniGames.Objects;
 
 namespace Player
 {
@@ -10,6 +11,7 @@ namespace Player
     {
         [SerializeField] private SceneSwitcher sceneSwitcher;
         [SerializeField] private Interacter interacter;
+        [SerializeField] private MovingPaw currentPaw;
 
         [SerializeField, Range(0, 25)] private float interactRange = 1;
 
@@ -40,6 +42,8 @@ namespace Player
             Vector2 mousePos = _inputActionAsset["MousePosition"].ReadValue<Vector2>();
             return _mainCam.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
         }
+
+        public void SetCurrentPaw(MovingPaw target) => currentPaw = target;
         
         private void GetReferences()
         {
@@ -58,12 +62,14 @@ namespace Player
         {
             _inputActionAsset["Interact"].performed += Interact;
             _inputActionAsset["ResetLevel"].performed += ResetLevel;
+            _inputActionAsset["Spam"].performed += Spam;
         }
 
         private void RemoveListeners()
         {
             _inputActionAsset["Interact"].performed -= Interact;
             _inputActionAsset["ResetLevel"].performed -= ResetLevel;
+            _inputActionAsset["Spam"].performed -= Spam;
         }
         
         #region Context
@@ -71,6 +77,12 @@ namespace Player
         private void Interact(InputAction.CallbackContext context) => interacter.CheckInteraction(interactRange);
         
         private void ResetLevel(InputAction.CallbackContext context) => sceneSwitcher.LoadScene();
+        
+        private void Spam(InputAction.CallbackContext context)
+        {
+            if (currentPaw)
+                currentPaw.MoveForward();
+        }
 
         #endregion
     }

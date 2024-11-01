@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Framework.Gameplay.MiniGames
+namespace Framework.Gameplay.MiniGames.Objects
 {
     public sealed class DragObjectPlacement : MonoBehaviour
     {
-        [SerializeField] private float detectionSize = 1;
         [field: SerializeField] public UnityEvent OnHold { get; private set; }
 
         private DraggableObject _draggableObject;
