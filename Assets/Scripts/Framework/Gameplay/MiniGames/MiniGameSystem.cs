@@ -14,13 +14,18 @@ namespace Framework.Gameplay.MiniGames
         
         [Header("References")]
         [SerializeField] private MiniGame currentMiniGame;
-        [SerializeField] private MovingPaw paw;
         [field: SerializeField] public InputParser PlayerInput { get; private set; }
         [SerializeField] private GameObject panel;
 
+        [Header("Paw references")]
+        [SerializeField] private MovingPaw paw;
+        [SerializeField] private GameObject candy;
+        [SerializeField] private GameObject weapon;
+        [SerializeField] private Vector2 weaponOffset;
+        
         [Space, Header("Settings")]
-        [SerializeField] private Rect miniGameBounds;
         [SerializeField] private MiniGameType type;
+        [SerializeField] private Rect miniGameBounds;
 
         [Header("Scaling")]
         [SerializeField] private float speed = 1;
@@ -32,6 +37,7 @@ namespace Framework.Gameplay.MiniGames
         [SerializeField] private UnityEvent onShrink = new();
         
         private Vector2 _size;
+        private bool _isSwapped;
 
         private void Awake()
         {
@@ -63,6 +69,24 @@ namespace Framework.Gameplay.MiniGames
                 PlayerInput.SetCurrentPaw(null);
         }
 
+        public void SwapWeaponWitchCandy()
+        {
+            if (_isSwapped)
+                return;
+
+            _isSwapped = true;
+            
+            Transform candyParent = candy.transform.parent;
+            Transform weaponParent = weapon.transform.parent;
+
+            candy.transform.SetPositionAndRotation(weapon.transform.position, weapon.transform.rotation);
+            weapon.transform.SetLocalPositionAndRotation((Vector3) weaponOffset + candy.transform.position, 
+                                                            candy.transform.rotation);
+            
+            candy.transform.SetParent(weaponParent);
+            weapon.transform.SetParent(candyParent);
+        }
+        
         private IEnumerator Scaling(bool shouldGrow)
         {
             Vector2 targetSize = shouldGrow ? _size : Vector2.zero;
