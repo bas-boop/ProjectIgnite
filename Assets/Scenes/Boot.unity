@@ -370,8 +370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ae47ac66e54e8fba1ae9ed38d94ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSingleton: 0
   loadSceneInAwake: 1
-  sceneToLoad: Gameplay
+  sceneToLoad: MainMenu
 --- !u!4 &1012702777
 Transform:
   m_ObjectHideFlags: 0
