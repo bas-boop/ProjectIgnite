@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Framework.Gameplay.MiniGames.Objects
 {
-    public class SidewaysMovingCat : MonoBehaviour
+    public sealed class SidewaysMovingCat : MonoBehaviour
     {
         [SerializeField , Range(0.5f , 2f)] private float movementStep = 0.5f;
         [SerializeField, Tooltip("will be performed everytime the player decides to move")] private UnityEvent onMove = new();

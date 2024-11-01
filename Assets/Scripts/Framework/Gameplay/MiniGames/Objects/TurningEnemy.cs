@@ -4,7 +4,7 @@ using TMPro;
 
 namespace Framework.Gameplay.MiniGames.Objects
 {
-    public class TurningEnemy : MonoBehaviour
+    public sealed class TurningEnemy : MonoBehaviour
     {
         [SerializeField] private UnityEvent onCaught = new();
         [HideInInspector] public bool minigameActive;
