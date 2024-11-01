@@ -3104,9 +3104,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 1664272375}
     m_Modifications:
     - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
+      propertyPath: duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254484965133201187, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
       propertyPath: <PlayerInput>k__BackingField
       value: 
       objectReference: {fileID: 262512558}
+    - target: {fileID: 1644348116551529574, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644348116551529574, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644348116551529574, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1989992116593805655, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
       propertyPath: m_Name
       value: MinigameSystemWeaponSwitch
@@ -3155,6 +3171,18 @@ PrefabInstance:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 262512556}
+    - target: {fileID: 7588900381587145097, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588900381587145097, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588900381587145097, guid: 6c374aad55674b04c98bc0aee5681b0b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
