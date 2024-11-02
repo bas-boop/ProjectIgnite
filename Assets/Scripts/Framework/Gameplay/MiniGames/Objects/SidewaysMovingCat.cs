@@ -6,10 +6,9 @@ namespace Framework.Gameplay.MiniGames.Objects
     public sealed class SidewaysMovingCat : MonoBehaviour
     {
         [SerializeField , Range(0.5f , 2f)] private float movementStep = 0.5f;
+        [SerializeField] private Transform goalPosition;
         [SerializeField, Tooltip("will be performed everytime the player decides to move")] private UnityEvent onMove = new();
         [SerializeField] private UnityEvent onGoalReached = new();
-        [SerializeField] private Transform goalPosition;
-
         private Vector3 _startPosition;
         private bool _canMove;
 
@@ -25,21 +24,19 @@ namespace Framework.Gameplay.MiniGames.Objects
 
         public void PerformStep()
         {
-            if (_canMove)
-            {
+            if (!_canMove)
+                return;
+            
                 Vector3 nextStepPosition = new Vector3(transform.position.x - movementStep, transform.position.y, transform.position.z);
                 transform.position = nextStepPosition;
                 onMove?.Invoke();
                 CheckIfGoalReached();
-            }
         }
 
         public void CheckIfGoalReached()
         {
-            if(transform.position.x <= goalPosition.position.x)
-            {
+            if (transform.position.x <= goalPosition.position.x)
                 onGoalReached?.Invoke();
-            }
         }
     }
 }

@@ -47,6 +47,7 @@ namespace Player
         public void SetCurrentPaw(MovingPaw target) => currentPaw = target;
 
         public void SetCurrentCucumber(SidewaysMovingCat target) => cucumberCat = target;
+
         private void GetReferences()
         {
             _mainCam = Camera.main;
@@ -87,6 +88,7 @@ namespace Player
             if (currentPaw)
                 currentPaw.MoveForward();
         }
+
         private void Step(InputAction.CallbackContext context)
         {
             if (cucumberCat)

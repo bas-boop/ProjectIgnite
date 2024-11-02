@@ -6,34 +6,27 @@ namespace Framework.Gameplay.MiniGames.Objects
 {
     public sealed class TurningEnemy : MonoBehaviour
     {
-        [SerializeField] private UnityEvent onCaught = new();
-        [HideInInspector] public bool minigameActive;
         [SerializeField] private bool _isWatching;
         private SpriteRenderer _spriteRenderer; //temporary until art implementation
         private float _lookInterval;
-        private Timer timer;
+        private Timer _timer;
+        [SerializeField] private UnityEvent onCaught = new();
 
         private void Start() 
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            timer = GetComponent<Timer>(); 
+            _timer = GetComponent<Timer>(); 
         }
 
-        public void OnMiniGameActive()
-        {
-            minigameActive = true;
-            SetTimer();
-        }
+        public void OnMiniGameActive() => SetTimer();
 
-        public void OnMinigameDeactivate()
-        {
-            minigameActive = false;
-            timer.SetCanCount(false);
-        }
+        public void OnMinigameDeactivate() => _timer.SetCanCount(false);
+
+
 
         public void RoundBehaviour()
         {
-            timer.ResetTimer();
+            _timer.ResetTimer();
             Turn();
             SetTimer();
         }
@@ -44,17 +37,14 @@ namespace Framework.Gameplay.MiniGames.Objects
         private void Turn()
         {
             _isWatching = !_isWatching;
-            if (_isWatching )
-                _spriteRenderer.color = Color.red;
-            else
-                _spriteRenderer.color = Color.green;
+            _spriteRenderer.color = _isWatching ? Color.red : Color.green; 
         }
 
         private void SetTimer()
         {
             _lookInterval = Random.Range(2, 4);
-            timer.SetTimerTarget(_lookInterval);
-            timer.SetCanCount(true);
+            _timer.SetTimerTarget(_lookInterval);
+            _timer.SetCanCount(true);
         }
 
         public void CheckIsCaught()
