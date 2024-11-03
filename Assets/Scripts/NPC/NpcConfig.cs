@@ -23,7 +23,7 @@ namespace NPC
                 case NpcType.Armed:
                 {
                     GameObject weapon = Instantiate(weaponPrefab, weaponSpawnLocation.position, Quaternion.identity, weaponSpawnLocation);
-                        Debug.LogWarning("weapon timer not set!");
+                    weapon.SetActive(false);
                     break;
                 }
                 case NpcType.Normal:

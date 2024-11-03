@@ -6,12 +6,14 @@ using Random = UnityEngine.Random;
 
 using Framework.Attributes;
 using Framework.Gameplay;
+using Framework.Gameplay.MiniGames;
 using Player;
 
 namespace Environment
 {
     public sealed class Weapon : MonoBehaviour
     {
+        [SerializeField] private MiniGameSystem miniGameSystem;
         [SerializeField, Tag] private string playerTag;
         [SerializeField, Range(1, 100)] private float shootForce = 10f;
         [SerializeField, RangeVector2(-360, 360, -3600, 360)] private Vector2 angle = new (-45, 45);
@@ -20,6 +22,7 @@ namespace Environment
 
         public bool IsDestroyed { get; private set; }
         
+        [SerializeField] private UnityEvent onInteract = new();
         [SerializeField] private UnityEvent onPlayerEnter = new();
         [SerializeField] private UnityEvent onPlayerExit = new();
         [SerializeField] private UnityEvent onDestroy = new();
@@ -76,9 +79,22 @@ namespace Environment
                 || !_canInteract)
                 return;
 
-            BeDestroyed();
+            onInteract?.Invoke();
+        }
+
+        public void Des()
+        {
+            if (IsDestroyed)
+                return;
+            
+            IsDestroyed = true;
+            onDestroy?.Invoke();
+            Destroy(interactVisual);
         }
         
+        /// <summary>
+        /// Old function
+        /// </summary>
         private void BeDestroyed()
         {
             foreach (Rigidbody2D rb in childSquares)

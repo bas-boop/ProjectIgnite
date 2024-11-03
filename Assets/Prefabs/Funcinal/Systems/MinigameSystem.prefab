@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db12d18e307e4096a86bc610f849097d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionSize: 1
   <OnHold>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -338,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 7919238155976537713}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -361,12 +360,19 @@ MonoBehaviour:
   currentMiniGame: {fileID: 0}
   <PlayerInput>k__BackingField: {fileID: 0}
   panel: {fileID: 3366003591333131098}
+  paw: {fileID: 0}
+  candy: {fileID: 0}
+  weapon: {fileID: 0}
+  weaponOffset: {x: 0, y: 0}
+  cucumber: {fileID: 0}
+  type: 0
+  delayedCloseTime: 1
   miniGameBounds:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 15
-    height: 8
+    width: 12
+    height: 7
   speed: 1
   duration: 0.5
   animationCurve:
@@ -402,6 +408,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  onGrow:
+    m_PersistentCalls:
+      m_Calls: []
+  onShrink:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3523371382641338654
 MonoBehaviour:
   m_ObjectHideFlags: 0

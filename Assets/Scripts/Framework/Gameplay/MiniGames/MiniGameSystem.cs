@@ -70,11 +70,21 @@ namespace Framework.Gameplay.MiniGames
         public void Deactivate()
         {
             StartCoroutine(Scaling(false));
-            
-            if (type == MiniGameType.SWAP_WEAPON)
-                PlayerInput.SetCurrentPaw(null);
-            if (type == MiniGameType.CUCUMBER)
-                PlayerInput.SetCurrentCucumber(null);
+
+            switch (type)
+            {
+                case MiniGameType.SWAP_WEAPON:
+                    PlayerInput.SetCurrentPaw(null);
+                    break;
+                case MiniGameType.CUCUMBER:
+                    PlayerInput.SetCurrentCucumber(null);
+                    break;
+                case MiniGameType.TEST:
+                case MiniGameType.TASED_CAT:
+                case MiniGameType.BOX:
+                default:
+                    break;
+            }
         }
 
         public void SwapWeaponWitchCandy()

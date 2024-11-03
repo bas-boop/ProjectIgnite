@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 using Framework.Extensions;
 
@@ -16,7 +15,10 @@ namespace Environment
 
         private void Awake()
         {
-            _this = GetComponent<Camera>();
+            _this = TryGetComponent(out Camera c) 
+                ? c 
+                : Camera.main;
+            
             _cameraDistance = transform.position.z;
             _startCameraHeight = transform.position.y;
         }
@@ -31,8 +33,8 @@ namespace Environment
 
         public void ZoomIn()
         {
-            _this.orthographicSize = 2;
-            _cameraHeight = -1.5f;
+            _this.orthographicSize = 4;
+            _cameraHeight = -0.5f;
         }
         
         public void ZoomOut()
