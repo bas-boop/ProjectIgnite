@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
+using Framework;
 using Framework.Attributes;
 using Framework.Gameplay;
 using Framework.Gameplay.MiniGames;
@@ -20,6 +20,8 @@ namespace Environment
         [SerializeField] private GameObject interactVisual;
         [SerializeField] private List<Rigidbody2D> childSquares = new ();
 
+        public GameObject WeaponUI { get; set; }
+        public Timer WeaponTimer { get; set; }
         public bool IsDestroyed { get; private set; }
         
         [SerializeField] private UnityEvent onInteract = new();
@@ -29,18 +31,24 @@ namespace Environment
 
         private Collider2D _collider;
         private WeaponManager _parent;
-        
+
+        private bool _isCreated;
         private bool _canInteract;
 
         private void Awake() => _collider = GetComponent<Collider2D>();
 
         private void OnEnable()
         {
-            Interacter interacter = FindObjectOfType<Interacter>();
-            interacter.AddWeapon(this);
+            if (!_isCreated)
+            {
+                OnCreate();
+                return;
+            }
             
-            _parent = FindObjectOfType<WeaponManager>();
-            _parent.AddWeapon(this);
+            Debug.Log("Weapon");
+            WeaponUI.gameObject.SetActive(true);
+            WeaponTimer.SetTimerLength(30);
+            Invoke(nameof(TimerStart), 0.001f);
         }
 
         private void Start()
@@ -72,6 +80,11 @@ namespace Environment
             _canInteract = false;
             onPlayerExit?.Invoke();
         }
+
+        public void SpawnWeapon()
+        {
+            transform.parent.gameObject.SetActive(true);
+        }
         
         public void Interact()
         {
@@ -90,6 +103,23 @@ namespace Environment
             IsDestroyed = true;
             onDestroy?.Invoke();
             Destroy(interactVisual);
+        }
+
+        private void TimerStart()
+        {
+            WeaponTimer.SetCanCount(true);
+            WeaponTimer.canCount = true;
+        }
+
+        private void OnCreate()
+        {
+            Interacter interacter = FindObjectOfType<Interacter>();
+            interacter.AddWeapon(this);
+            
+            _parent = FindObjectOfType<WeaponManager>();
+            _parent.AddWeapon(this);
+
+            _isCreated = true;
         }
         
         /// <summary>

@@ -14,8 +14,25 @@ namespace Framework.Gameplay
         [SerializeField] private UnityEvent onAllDestroyed = new();
         [SerializeField] private UnityEvent onNotAllDestroyed = new();
 
-        public void AddWeapon(Weapon targetWeapon) => weapons.Add(targetWeapon);
+        public void StartSpawningWeapons()
+        {
+            weapons[Random.Range(0, weapons.Count)].SpawnWeapon();
+        }
         
+        public void AddWeapon(Weapon targetWeapon)
+        {
+            if (weapons.Contains(targetWeapon)) 
+                return;
+            
+            weapons.Add(targetWeapon);
+        }
+
+        public void RemoveWeapon(Weapon targetWeapon)
+        {
+            if (weapons.Contains(targetWeapon)) 
+                weapons.Remove(targetWeapon);
+        }
+
         public void CheckAllDestroyed()
         {
             if (weapons.Count == 0)

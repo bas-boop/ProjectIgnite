@@ -14,5 +14,11 @@ namespace Environment
             this.target = target;
             this.position = position;
         }
+        
+        public TargetScreenInfo(Transform target)
+        {
+            this.target = target;
+            position = ScreenPosition.INSIDE;
+        }
     }
 }

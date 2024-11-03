@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+using Environment;
 using Framework;
 
 namespace UI.World
@@ -10,6 +11,8 @@ namespace UI.World
         [SerializeField] private Timer timer;
         [SerializeField] private Image background;
         [SerializeField] private Gradient gradient;
+        [SerializeField] private bool isUI;
+        
         public float Progress { get; set; }
 
         private bool _shouldUpdate;
@@ -26,10 +29,17 @@ namespace UI.World
             background.color = gradient.Evaluate(Progress);
         }
 
-        private void OnEnable() => _shouldUpdate = true;
+        private void OnEnable()
+        {
+            _shouldUpdate = true;
+            
+            if (isUI)
+                return;
+            
+            ScreenChecker a = FindObjectOfType<ScreenChecker>();
+            a.Add(transform);
+        }
 
         private void OnDisable() => _shouldUpdate = false;
-
-        public void SetTimer(Timer target) => timer = target;
     }
 }

@@ -14,20 +14,31 @@ namespace Environment
         [SerializeField] private GameObject rightUI;
         [SerializeField] private List<TargetScreenInfo> screenPositions;
         
-        private Camera mainCamera;
+        private Camera _mainCamera;
 
         private void Start()
         {
-            mainCamera = Camera.main;
+            _mainCamera = Camera.main;
 
-            if (mainCamera == null)
+            if (_mainCamera == null)
                 Debug.LogError("Main camera not found.");
+            
+            leftUI.SetActive(false);
+            rightUI.SetActive(false);
         }
 
         private void Update()
         {
+            if (screenPositions.Count == 0)
+                return;
+            
             CheckPositions();
             UpdateUI();
+        }
+
+        public void Add(Transform target)
+        {
+            screenPositions.Add(new TargetScreenInfo(target));
         }
 
         private void CheckPositions()
@@ -38,7 +49,7 @@ namespace Environment
             for (int i = 0; i < screenPositions.Count; i++)
             {
                 TargetScreenInfo targetScreenInfo = screenPositions[i];
-                Vector3 screenPoint = mainCamera.WorldToScreenPoint(targetScreenInfo.target.position);
+                Vector3 screenPoint = _mainCamera.WorldToScreenPoint(targetScreenInfo.target.position);
 
                 ScreenPosition position;
 

@@ -21,6 +21,12 @@ namespace Player
             }
         }
 
-        public void AddWeapon(Weapon target) => weapons.Add(target);
+        public void AddWeapon(Weapon target)
+        {
+            if (weapons.Contains(target)) 
+                return;
+            
+            weapons.Add(target);
+        }
     }
 }

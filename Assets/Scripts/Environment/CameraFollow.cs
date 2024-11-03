@@ -7,6 +7,7 @@ namespace Environment
     public class CameraFollow : MonoBehaviour
     {
         [SerializeField] private Transform followTarget;
+        [SerializeField] private bool vertical = true;
 
         private Camera _this;
         private float _cameraDistance;
@@ -26,7 +27,7 @@ namespace Environment
         private void Update()
         {
             Vector3 newPos = followTarget.position;
-            newPos.SetY(_cameraHeight);
+            newPos.SetY(vertical ? _cameraHeight : 0);
             newPos.SetZ(_cameraDistance);
             transform.position = newPos;
         }
@@ -34,7 +35,7 @@ namespace Environment
         public void ZoomIn()
         {
             _this.orthographicSize = 4;
-            _cameraHeight = -0.5f;
+            _cameraHeight = -1f;
         }
         
         public void ZoomOut()
