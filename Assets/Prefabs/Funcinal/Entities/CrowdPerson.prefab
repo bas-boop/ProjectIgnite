@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 266210416551882469}
   - component: {fileID: 3114580424115039082}
   - component: {fileID: 6257983199754058984}
+  - component: {fileID: 5192097690376663552}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -92,8 +93,8 @@ Transform:
   m_GameObject: {fileID: 7812823044666804859}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: -2.33, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3868887412582907850}
@@ -139,8 +140,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.19956125, g: 0.19286224, b: 0.20754719, a: 1}
+  m_Sprite: {fileID: -829632881, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,7 +164,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 2, y: 3}
-  height: 0.1
+  height: 0.01
+--- !u!114 &5192097690376663552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812823044666804859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd61f6194e48da9f0acb52e127c436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -829632881, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: -723133180, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: -785041044, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: -1092878208, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: -516831407, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: -1473471672, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: 1200321263, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: -1105246918, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
+  - {fileID: -1621227417, guid: 800ff951410cf1549a2aed967b62ac44, type: 3}
 --- !u!1001 &921488602352535270
 PrefabInstance:
   m_ObjectHideFlags: 0

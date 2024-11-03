@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 5438554578776768584}
   - component: {fileID: 8736089369476879059}
   m_Layer: 0
-  m_Name: exclamation mark
+  m_Name: ExclamationMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

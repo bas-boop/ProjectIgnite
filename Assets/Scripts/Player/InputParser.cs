@@ -12,6 +12,7 @@ namespace Player
         [SerializeField] private SceneSwitcher sceneSwitcher;
         [SerializeField] private Interacter interacter;
         [SerializeField] private MovingPaw currentPaw;
+        [SerializeField] private SidewaysMovingCat cucumberCat;
 
         [SerializeField, Range(0, 25)] private float interactRange = 1;
 
@@ -44,7 +45,9 @@ namespace Player
         }
 
         public void SetCurrentPaw(MovingPaw target) => currentPaw = target;
-        
+
+        public void SetCurrentCucumber(SidewaysMovingCat target) => cucumberCat = target;
+
         private void GetReferences()
         {
             _mainCam = Camera.main;
@@ -63,6 +66,7 @@ namespace Player
             _inputActionAsset["Interact"].performed += Interact;
             _inputActionAsset["ResetLevel"].performed += ResetLevel;
             _inputActionAsset["Spam"].performed += Spam;
+            _inputActionAsset["Step"].performed += Step;
         }
 
         private void RemoveListeners()
@@ -70,6 +74,7 @@ namespace Player
             _inputActionAsset["Interact"].performed -= Interact;
             _inputActionAsset["ResetLevel"].performed -= ResetLevel;
             _inputActionAsset["Spam"].performed -= Spam;
+            _inputActionAsset["Step"].performed -= Step;
         }
         
         #region Context
@@ -82,6 +87,12 @@ namespace Player
         {
             if (currentPaw)
                 currentPaw.MoveForward();
+        }
+
+        private void Step(InputAction.CallbackContext context)
+        {
+            if (cucumberCat)
+                cucumberCat.PerformStep();
         }
 
         #endregion
