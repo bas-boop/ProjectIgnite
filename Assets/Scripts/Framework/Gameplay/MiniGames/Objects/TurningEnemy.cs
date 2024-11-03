@@ -1,6 +1,7 @@
 using UnityEngine.Events;
 using UnityEngine;
 using TMPro;
+using Framework.Attributes;
 
 namespace Framework.Gameplay.MiniGames.Objects
 {
@@ -8,21 +9,21 @@ namespace Framework.Gameplay.MiniGames.Objects
     {
         [SerializeField] private bool _isWatching;
         private SpriteRenderer _spriteRenderer; //temporary until art implementation
-        private float _lookInterval;
+        [SerializeField,RangeVector2(2,3 , 3,5)] private Vector2 lookInterval;
         private Timer _timer;
         [SerializeField] private UnityEvent onCaught = new();
 
         private void Start() 
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _timer = GetComponent<Timer>(); 
+            _timer = GetComponent<Timer>();
         }
 
         public void OnMiniGameActive() => SetTimer();
 
         public void OnMinigameDeactivate() => _timer.SetCanCount(false);
 
-
+        
 
         public void RoundBehaviour()
         {
@@ -42,18 +43,15 @@ namespace Framework.Gameplay.MiniGames.Objects
 
         private void SetTimer()
         {
-            _lookInterval = Random.Range(2, 4);
-            _timer.SetTimerTarget(_lookInterval);
+            float randomTime = Random.Range(lookInterval.x, lookInterval.y);
+            _timer.SetTimerTarget(randomTime);
             _timer.SetCanCount(true);
         }
 
         public void CheckIsCaught()
         {
             if (_isWatching)
-            {
-                print("caught");
                 onCaught?.Invoke();
-            }  
         }
     }
 }
