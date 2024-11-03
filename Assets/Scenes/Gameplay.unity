@@ -996,6 +996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 57798662}
   vertical: 1
+  zoomHeight: 0
 --- !u!1 &408413959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53faf19c616247a4ae73d6c68573e716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnOtherWeaponTime: 12.5
   weapons: []
   onAllDestroyed:
     m_PersistentCalls:

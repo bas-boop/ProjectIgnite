@@ -9,6 +9,7 @@ namespace Framework.Gameplay
 {
     public sealed class WeaponManager : MonoBehaviour
     {
+        [SerializeField] private float spawnOtherWeaponTime = 1;
         [SerializeField] private List<Weapon> weapons;
 
         [SerializeField] private UnityEvent onAllDestroyed = new();
@@ -16,7 +17,19 @@ namespace Framework.Gameplay
 
         public void StartSpawningWeapons()
         {
-            weapons[Random.Range(0, weapons.Count)].SpawnWeapon();
+            List<Weapon> ws = weapons;
+            
+            for (int i = ws.Count - 1; i >= 0; i--)
+            {
+                if (ws[i].IsActive)
+                    ws.RemoveAt(i);
+            }
+            
+            if (ws.Count == 0)
+                return;
+            
+            ws[Random.Range(0, ws.Count)].SpawnWeapon();
+            Invoke(nameof(StartSpawningWeapons), spawnOtherWeaponTime);
         }
         
         public void AddWeapon(Weapon targetWeapon)

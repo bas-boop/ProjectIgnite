@@ -8,6 +8,7 @@ namespace Environment
     {
         [SerializeField] private Transform followTarget;
         [SerializeField] private bool vertical = true;
+        [SerializeField] private float zoomHeight = -0.5f;
 
         private Camera _this;
         private float _cameraDistance;
@@ -35,7 +36,7 @@ namespace Environment
         public void ZoomIn()
         {
             _this.orthographicSize = 4;
-            _cameraHeight = -1f;
+            _cameraHeight = zoomHeight;
         }
         
         public void ZoomOut()

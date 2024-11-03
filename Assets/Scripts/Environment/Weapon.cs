@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -23,6 +24,7 @@ namespace Environment
         public GameObject WeaponUI { get; set; }
         public Timer WeaponTimer { get; set; }
         public bool IsDestroyed { get; private set; }
+        public bool IsActive { get; private set; }
         
         [SerializeField] private UnityEvent onInteract = new();
         [SerializeField] private UnityEvent onPlayerEnter = new();
@@ -31,6 +33,7 @@ namespace Environment
 
         private Collider2D _collider;
         private WeaponManager _parent;
+        private Interacter _interacter;
 
         private bool _isCreated;
         private bool _canInteract;
@@ -45,10 +48,9 @@ namespace Environment
                 return;
             }
             
-            Debug.Log("Weapon");
             WeaponUI.gameObject.SetActive(true);
             WeaponTimer.SetTimerLength(30);
-            Invoke(nameof(TimerStart), 0.001f);
+            Invoke(nameof(StartTimer), 0.001f);
         }
 
         private void Start()
@@ -81,18 +83,26 @@ namespace Environment
             onPlayerExit?.Invoke();
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag(playerTag)) 
+                _canInteract = true;
+        }
+
         public void SpawnWeapon()
         {
             transform.parent.gameObject.SetActive(true);
+            IsActive = true;
         }
         
-        public void Interact()
+        public bool Interact()
         {
             if (IsDestroyed
                 || !_canInteract)
-                return;
-
+                return false;
+            
             onInteract?.Invoke();
+            return true;
         }
 
         public void Des()
@@ -102,19 +112,17 @@ namespace Environment
             
             IsDestroyed = true;
             onDestroy?.Invoke();
+            _interacter.RemoveWeapon(this);
+            Destroy(WeaponUI.gameObject);
             Destroy(interactVisual);
         }
 
-        private void TimerStart()
-        {
-            WeaponTimer.SetCanCount(true);
-            WeaponTimer.canCount = true;
-        }
+        private void StartTimer() => WeaponTimer.SetCanCount(true);
 
         private void OnCreate()
         {
-            Interacter interacter = FindObjectOfType<Interacter>();
-            interacter.AddWeapon(this);
+            _interacter = FindObjectOfType<Interacter>();
+            _interacter.AddWeapon(this);
             
             _parent = FindObjectOfType<WeaponManager>();
             _parent.AddWeapon(this);

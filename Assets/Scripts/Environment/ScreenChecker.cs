@@ -41,6 +41,18 @@ namespace Environment
             screenPositions.Add(new TargetScreenInfo(target));
         }
 
+        public void Remove(Transform target)
+        {
+            if (screenPositions.Count == 0)
+                return;
+            
+            List<TargetScreenInfo> itemsToRemove = screenPositions.Where(targetScreenInfo 
+                => targetScreenInfo.target == target).ToList();
+            
+            foreach (TargetScreenInfo item in itemsToRemove) 
+                screenPositions.Remove(item);
+        }
+
         private void CheckPositions()
         {
             float leftBound = 0 + margin;

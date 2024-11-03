@@ -15,8 +15,9 @@ namespace UI.World
         
         public float Progress { get; set; }
 
+        private ScreenChecker _screenChecker;
         private bool _shouldUpdate;
-        
+
         private void Update()
         {
             if (!_shouldUpdate)
@@ -36,10 +37,16 @@ namespace UI.World
             if (isUI)
                 return;
             
-            ScreenChecker a = FindObjectOfType<ScreenChecker>();
-            a.Add(transform);
+            _screenChecker = FindObjectOfType<ScreenChecker>();
+            _screenChecker.Add(transform);
         }
 
-        private void OnDisable() => _shouldUpdate = false;
+        private void OnDisable()
+        {
+            _shouldUpdate = false;
+            
+            if (_screenChecker)
+                _screenChecker.Remove(transform);
+        }
     }
 }
