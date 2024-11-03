@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 using Environment;
 using Framework.Extensions;
@@ -7,18 +9,18 @@ namespace Player
 {
     public sealed class Interacter : MonoBehaviour
     {
-        [SerializeField] private Weapon[] weapons;
+        [SerializeField] private List<Weapon> weapons;
 
         public void CheckInteraction(float range)
         {
-            foreach (Weapon weapon in weapons)
+            foreach (Weapon weapon in weapons.Where(weapon =>
+                         weapon.transform.position.IsWithinRange(transform.position, range)))
             {
-                if (!weapon.transform.position.IsWithinRange(transform.position, range))
-                    continue;
-                
                 weapon.Interact();
                 break;
             }
         }
+
+        public void AddWeapon(Weapon target) => weapons.Add(target);
     }
 }

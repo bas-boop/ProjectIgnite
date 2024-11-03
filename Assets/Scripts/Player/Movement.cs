@@ -17,6 +17,8 @@ namespace Player
 
         public void Move(Vector2 input)
         {
+            input.y = 0;
+            
             if (input.x != 0)
             {
                 float scaleX = input.x > 0 ? 1 : -1;

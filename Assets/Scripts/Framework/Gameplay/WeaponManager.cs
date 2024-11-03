@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,13 +10,21 @@ namespace Framework.Gameplay
 {
     public sealed class WeaponManager : MonoBehaviour
     {
-        [SerializeField] private Weapon[] weapons;
+        [SerializeField] private List<Weapon> weapons;
 
         [SerializeField] private UnityEvent onAllDestroyed = new();
         [SerializeField] private UnityEvent onNotAllDestroyed = new();
 
+        public void AddWeapon(Weapon targetWeapon) => weapons.Add(targetWeapon);
+        
         public void CheckAllDestroyed()
         {
+            if (weapons.Count == 0)
+            {
+                Debug.LogError("No weapons have been set!");
+                return;
+            }
+            
             bool areAllWeaponsDestroyed = weapons.All(weapon => weapon.IsDestroyed);
             InvokeCorrectEvent(areAllWeaponsDestroyed);
         }
@@ -23,7 +33,7 @@ namespace Framework.Gameplay
         {
             int count = weapons.Count(weapon => weapon.IsDestroyed);
             
-            if (count == weapons.Length)
+            if (count == weapons.Count)
                 InvokeCorrectEvent(true);
         }
 

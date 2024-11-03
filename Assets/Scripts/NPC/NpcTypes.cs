@@ -1,4 +1,4 @@
-namespace NpcSystem
+namespace NPC
 {
     public enum NpcType
     {

@@ -83,7 +83,7 @@ namespace Environment
 
             leftUI.SetActive(l);
             rightUI.SetActive(r);
-
+            
             ApplyProgress(l, leftUI, ScreenPosition.OUTSIDE_LEFT);
             ApplyProgress(r, rightUI, ScreenPosition.OUTSIDE_RIGHT);
         }

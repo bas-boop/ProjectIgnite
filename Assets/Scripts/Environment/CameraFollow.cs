@@ -12,11 +12,13 @@ namespace Environment
         private Camera _this;
         private float _cameraDistance;
         private float _cameraHeight;
+        private float _startCameraHeight;
 
         private void Awake()
         {
             _this = GetComponent<Camera>();
             _cameraDistance = transform.position.z;
+            _startCameraHeight = transform.position.y;
         }
 
         private void Update()
@@ -36,7 +38,7 @@ namespace Environment
         public void ZoomOut()
         {
             _this.orthographicSize = 5;
-            _cameraHeight = 0;
+            _cameraHeight = _startCameraHeight;
         }
     }
 }

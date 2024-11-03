@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 using Framework.Attributes;
+using Framework.Gameplay;
+using Player;
 
 namespace Environment
 {
@@ -22,10 +25,32 @@ namespace Environment
         [SerializeField] private UnityEvent onDestroy = new();
 
         private Collider2D _collider;
+        private WeaponManager _parent;
         
         private bool _canInteract;
 
         private void Awake() => _collider = GetComponent<Collider2D>();
+
+        private void OnEnable()
+        {
+            Interacter interacter = FindObjectOfType<Interacter>();
+            interacter.AddWeapon(this);
+            
+            _parent = FindObjectOfType<WeaponManager>();
+            _parent.AddWeapon(this);
+        }
+
+        private void Start()
+        {
+            Interacter interacter = FindObjectOfType<Interacter>();
+            interacter.AddWeapon(this);
+
+            CameraFollow cf = FindObjectOfType<CameraFollow>();
+            onPlayerEnter.AddListener(cf.ZoomIn);
+            onPlayerExit.AddListener(cf.ZoomOut);
+            
+            onDestroy.AddListener(_parent.CheckByEachWeapon);
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -44,7 +69,7 @@ namespace Environment
             _canInteract = false;
             onPlayerExit?.Invoke();
         }
-
+        
         public void Interact()
         {
             if (IsDestroyed
