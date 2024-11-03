@@ -51,6 +51,9 @@ namespace Framework.Gameplay.MiniGames
             if (type == MiniGameType.SWAP_WEAPON
                 && paw == null)
                 throw new Exception(ERROR_NO_POW);
+
+            if (PlayerInput == null)
+                PlayerInput = FindObjectOfType<InputParser>();
         }
 
         private void Start() => transform.localScale = Vector3.zero;

@@ -6,7 +6,8 @@ namespace NPC
     public sealed class CrowdSpawner : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private GameObject npcPrefab;
+        [SerializeField] private GameObject npcPrefabSwap;
+        [SerializeField] private GameObject npcPrefabCucumber;
         
         [Header("Settings")]
         [SerializeField, Tooltip("The space between the characters")] private Vector2 spacing = Vector2.one;
@@ -31,15 +32,15 @@ namespace NPC
         {
             float totalDistance = Vector3.Distance(startPoint, endPoint);
             int npcCount = Mathf.FloorToInt(totalDistance / 
-                            (npcPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.x + GetRandomSpacing()));
+                            (npcPrefabSwap.GetComponentInChildren<SpriteRenderer>().bounds.size.x + GetRandomSpacing()));
             List<NpcConfig> npc = new();
             Vector3 direction = (endPoint - startPoint).normalized;
 
             for (int i = 0; i < npcCount; i++)
             {
                 Vector3 spawnPosition = startPoint + direction * 
-                    (i * (npcPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.x + GetRandomSpacing()));
-                GameObject character = Instantiate(npcPrefab, spawnPosition, Quaternion.identity, transform);
+                    (i * (npcPrefabSwap.GetComponentInChildren<SpriteRenderer>().bounds.size.x + GetRandomSpacing()));
+                GameObject character = Instantiate(RandomNpc(), spawnPosition, Quaternion.identity, transform);
                 character.name += $" {i}";
                 NpcConfig component = character.GetComponent<NpcConfig>();
                 npc.Add(component);
@@ -71,6 +72,12 @@ namespace NPC
 
         private float GetRandomSpacing() => Random.Range(spacing.x, spacing.y);
 
+        private GameObject RandomNpc()
+        {
+            int r = Random.Range(0, 2);
+            return r == 0 ? npcPrefabSwap : npcPrefabCucumber;
+        }
+        
         private void OnDrawGizmos()
         {
             if (!debugGizmos)

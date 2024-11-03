@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 using Framework.Extensions;
 
@@ -23,6 +24,12 @@ namespace Environment
             
             _cameraDistance = transform.position.z;
             _startCameraHeight = transform.position.y;
+        }
+
+        private void Start()
+        {
+            if (followTarget == null)
+                followTarget = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         private void Update()

@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ea880e2bf8a5447b4fcc9109ac6300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcPrefab: {fileID: 2641031825038582101, guid: 05550e7bc8bc38b46933657614d95373, type: 3}
+  npcPrefabSwap: {fileID: 8322574296991619413, guid: 4e0249d616d3e6546b75435715933afc, type: 3}
+  npcPrefabCucumber: {fileID: 424302244443364467, guid: da33960b88b8a26418827c68674e02a6, type: 3}
   spacing: {x: 0.6, y: 0.8}
   startPoint: {x: -50, y: 0, z: 0}
   endPoint: {x: 50, y: 0, z: 0}

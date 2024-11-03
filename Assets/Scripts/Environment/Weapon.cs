@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -14,7 +13,7 @@ namespace Environment
 {
     public sealed class Weapon : MonoBehaviour
     {
-        [SerializeField] private MiniGameSystem miniGameSystem;
+        [field: SerializeField] public MiniGameSystem miniGameSystem { get; set; }
         [SerializeField, Tag] private string playerTag;
         [SerializeField, Range(1, 100)] private float shootForce = 10f;
         [SerializeField, RangeVector2(-360, 360, -3600, 360)] private Vector2 angle = new (-45, 45);
@@ -100,6 +99,9 @@ namespace Environment
             if (IsDestroyed
                 || !_canInteract)
                 return false;
+            
+            if (miniGameSystem)
+                miniGameSystem.Activate();
             
             onInteract?.Invoke();
             return true;

@@ -2,6 +2,7 @@ using UnityEngine;
 
 using Environment;
 using Framework;
+using Framework.Gameplay.MiniGames;
 
 namespace NPC
 {
@@ -10,6 +11,7 @@ namespace NPC
         [SerializeField] private GameObject weaponPrefab;
         [SerializeField] private GameObject weaponUI;
         [SerializeField] private Timer timer;
+        [SerializeField] private MiniGameSystem miniGameSystem;
         [SerializeField] private Transform weaponSpawnLocation;
         [SerializeField, Tooltip("Location for the animated character to spawn (NOT world position)")] private Transform charactersSpawn;
         [SerializeField, Tooltip("How long the player has to solve this puzzle")] private float solveTime;
@@ -34,7 +36,7 @@ namespace NPC
                     w.WeaponUI = weaponUI;
                     timer.SetTimerTarget(solveTime);
                     w.WeaponTimer = timer;
-                    
+                    w.miniGameSystem = miniGameSystem;
                     break;
                 }
                 case NpcType.Normal:

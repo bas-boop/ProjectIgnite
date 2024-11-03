@@ -19,7 +19,7 @@ namespace NPC
         private void Update()
         {
             float newY = _startPos.y + Mathf.Sin(Time.time * _speed) * height;
-            transform.position = new (_startPos.x, newY, _startPos.z);
+            transform.position = new (transform.position.x, newY, _startPos.z);
         }
     }
 }
