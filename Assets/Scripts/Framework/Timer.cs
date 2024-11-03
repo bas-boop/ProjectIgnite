@@ -58,6 +58,12 @@ namespace Framework
         /// <param name="target">The target amount for the timer</param>
         public void SetTimerLength(float target) => _currentTimer = target;
 
+        ///<summary>
+        ///Set the timer timerThreshold or startingTime of the timer
+        ///</summary>
+        /// <param name="target">this will be the new target the timer will count up or down to</param> 
+        public void SetTimerTarget(float target) => timerThreshold = isCountingUp ? target : startingTime = target;
+
         /// <summary>
         /// Get the timer it's current length.
         /// </summary>
@@ -93,13 +99,14 @@ namespace Framework
             {
                 case false
                     when _currentTimer <= 0:
-                    onTimerDone?.Invoke();
                     SetCanCount(false);
+                    onTimerDone?.Invoke();
+
                     break;
                 case true
                     when _currentTimer > timerThreshold:
-                    onTimerPassedThreshold?.Invoke();
                     SetCanCount(false);
+                    onTimerPassedThreshold?.Invoke();
                     break;
             }
         }
