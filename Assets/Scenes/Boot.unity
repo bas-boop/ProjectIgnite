@@ -372,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSingleton: 0
   loadSceneInAwake: 1
-  sceneToLoad: Gameplay
+  sceneToLoad: MainMenu
 --- !u!4 &1012702777
 Transform:
   m_ObjectHideFlags: 0
