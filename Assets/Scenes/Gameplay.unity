@@ -335,7 +335,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2.9257143, y: 2.9257143}
+    oldSize: {x: 4.096, y: 4.096}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -888,6 +888,7 @@ GameObject:
   - component: {fileID: 371493185}
   - component: {fileID: 371493188}
   - component: {fileID: 371493189}
+  - component: {fileID: 371493190}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1029,6 +1030,27 @@ MonoBehaviour:
   followTarget: {fileID: 57798662}
   vertical: 1
   zoomHeight: 0
+--- !u!95 &371493190
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371493184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &408413959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1413,7 @@ PlayableDirector:
   - key: {fileID: 5329916424911860996, guid: 2ed59fc2d440e0e46b08972064da9cef, type: 2}
     value: {fileID: 57798654}
   - key: {fileID: -5365931796571530534, guid: 2ed59fc2d440e0e46b08972064da9cef, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 371493190}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &574011072
