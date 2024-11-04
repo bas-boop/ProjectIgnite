@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 57798655}
   - component: {fileID: 57798654}
   - component: {fileID: 57798663}
+  - component: {fileID: 57798664}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -480,6 +481,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1326ef51bd41be84981cb46bfc7637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &57798664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57798653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: d1c356008b5cea94b96c3ab9534d438d, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57798656}
+          m_TargetAssemblyTypeName: Player.Movement, Assembly-CSharp
+          m_MethodName: ToggleMovement
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &70134195
 GameObject:
   m_ObjectHideFlags: 0
