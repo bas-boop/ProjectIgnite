@@ -19,6 +19,7 @@ namespace Environment
         [SerializeField, RangeVector2(-360, 360, -3600, 360)] private Vector2 angle = new (-45, 45);
         [SerializeField] private GameObject interactVisual;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private SpriteRenderer red;
         [SerializeField] private Sprite gun;
         [SerializeField] private Sprite bat;
         [SerializeField] private List<Rigidbody2D> childSquares = new ();
@@ -69,6 +70,8 @@ namespace Environment
                 case MiniGameType.SWAP_WEAPON:
                     spriteRenderer.sprite = bat;
                     spriteRenderer.transform.localScale += Vector3.one * 0.2f;
+                    red.sprite = bat;
+                    red.transform.localScale += Vector3.one * 0.2f;
                     break;
                 case MiniGameType.CUCUMBER:
                     spriteRenderer.sprite = gun;
