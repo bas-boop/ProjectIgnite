@@ -18,6 +18,9 @@ namespace Environment
         [SerializeField, Range(1, 100)] private float shootForce = 10f;
         [SerializeField, RangeVector2(-360, 360, -3600, 360)] private Vector2 angle = new (-45, 45);
         [SerializeField] private GameObject interactVisual;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Sprite gun;
+        [SerializeField] private Sprite bat;
         [SerializeField] private List<Rigidbody2D> childSquares = new ();
 
         public GameObject WeaponUI { get; set; }
@@ -61,7 +64,21 @@ namespace Environment
             onPlayerEnter.AddListener(cf.ZoomIn);
             onPlayerExit.AddListener(cf.ZoomOut);
             
-            onDestroy.AddListener(_parent.CheckByEachWeapon);
+            switch (miniGameSystem.type)
+            {
+                case MiniGameType.SWAP_WEAPON:
+                    spriteRenderer.sprite = bat;
+                    spriteRenderer.transform.localScale += Vector3.one * 0.2f;
+                    break;
+                case MiniGameType.CUCUMBER:
+                    spriteRenderer.sprite = gun;
+                    break;
+                case MiniGameType.TEST:
+                case MiniGameType.TASED_CAT:
+                case MiniGameType.BOX:
+                default:
+                    break;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)

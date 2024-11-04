@@ -27,8 +27,8 @@ namespace Framework.Gameplay.MiniGames
         [SerializeField] SidewaysMovingCat cucumber;
 
         [Space, Header("Settings")]
-        [SerializeField] private MiniGameType type;
         [SerializeField, Range(0, 5)] private float delayedCloseTime = 1;
+        [field: SerializeField] public MiniGameType type { get; private set; }
         [SerializeField] private Rect miniGameBounds;
 
         [Header("Scaling")]
@@ -54,6 +54,8 @@ namespace Framework.Gameplay.MiniGames
 
             if (PlayerInput == null)
                 PlayerInput = FindObjectOfType<InputParser>();
+            
+            onShrink.AddListener(FindObjectOfType<WeaponManager>().CheckByEachWeapon);
         }
 
         private void Start() => transform.localScale = Vector3.zero;

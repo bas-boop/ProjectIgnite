@@ -788,6 +788,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7082106124533296963}
     - target: {fileID: 7427496821351550981, guid: 0612874713da31f47b86ebe77827ba04, type: 3}
+      propertyPath: <type>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427496821351550981, guid: 0612874713da31f47b86ebe77827ba04, type: 3}
       propertyPath: onShrink.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
