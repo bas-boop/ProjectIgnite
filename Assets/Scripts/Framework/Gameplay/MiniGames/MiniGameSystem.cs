@@ -27,8 +27,8 @@ namespace Framework.Gameplay.MiniGames
         [SerializeField] SidewaysMovingCat cucumber;
 
         [Space, Header("Settings")]
-        [SerializeField] private MiniGameType type;
         [SerializeField, Range(0, 5)] private float delayedCloseTime = 1;
+        [field: SerializeField] public MiniGameType type { get; private set; }
         [SerializeField] private Rect miniGameBounds;
 
         [Header("Scaling")]
@@ -51,6 +51,11 @@ namespace Framework.Gameplay.MiniGames
             if (type == MiniGameType.SWAP_WEAPON
                 && paw == null)
                 throw new Exception(ERROR_NO_POW);
+
+            if (PlayerInput == null)
+                PlayerInput = FindObjectOfType<InputParser>();
+            
+            onShrink.AddListener(FindObjectOfType<WeaponManager>().CheckByEachWeapon);
         }
 
         private void Start() => transform.localScale = Vector3.zero;
@@ -70,11 +75,21 @@ namespace Framework.Gameplay.MiniGames
         public void Deactivate()
         {
             StartCoroutine(Scaling(false));
-            
-            if (type == MiniGameType.SWAP_WEAPON)
-                PlayerInput.SetCurrentPaw(null);
-            if (type == MiniGameType.CUCUMBER)
-                PlayerInput.SetCurrentCucumber(null);
+
+            switch (type)
+            {
+                case MiniGameType.SWAP_WEAPON:
+                    PlayerInput.SetCurrentPaw(null);
+                    break;
+                case MiniGameType.CUCUMBER:
+                    PlayerInput.SetCurrentCucumber(null);
+                    break;
+                case MiniGameType.TEST:
+                case MiniGameType.TASED_CAT:
+                case MiniGameType.BOX:
+                default:
+                    break;
+            }
         }
 
         public void SwapWeaponWitchCandy()

@@ -139,7 +139,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  m_Color: {r: 0.6039216, g: 0.6392157, b: 0.6901961, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db12d18e307e4096a86bc610f849097d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionSize: 1
   <OnHold>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -361,12 +360,19 @@ MonoBehaviour:
   currentMiniGame: {fileID: 0}
   <PlayerInput>k__BackingField: {fileID: 0}
   panel: {fileID: 3366003591333131098}
+  paw: {fileID: 0}
+  candy: {fileID: 0}
+  weapon: {fileID: 0}
+  weaponOffset: {x: 0, y: 0}
+  cucumber: {fileID: 0}
+  type: 0
+  delayedCloseTime: 1
   miniGameBounds:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 15
-    height: 8
+    width: 12
+    height: 7
   speed: 1
   duration: 0.5
   animationCurve:
@@ -402,6 +408,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  onGrow:
+    m_PersistentCalls:
+      m_Calls: []
+  onShrink:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3523371382641338654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
+  vertical: 0
+  zoomHeight: 0
 --- !u!1001 &2407664156558410808
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -32,6 +32,9 @@ namespace Environment.Parallax
             {
                 _parallaxScales.Add(layer.layer, layer.speed);
             }
+
+            if (followCamera)
+                _cam = Camera.main.transform;
         }
 
         private void Update()

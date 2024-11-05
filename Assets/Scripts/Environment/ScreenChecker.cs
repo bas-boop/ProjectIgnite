@@ -14,20 +14,43 @@ namespace Environment
         [SerializeField] private GameObject rightUI;
         [SerializeField] private List<TargetScreenInfo> screenPositions;
         
-        private Camera mainCamera;
+        private Camera _mainCamera;
 
         private void Start()
         {
-            mainCamera = Camera.main;
+            _mainCamera = Camera.main;
 
-            if (mainCamera == null)
+            if (_mainCamera == null)
                 Debug.LogError("Main camera not found.");
+            
+            leftUI.SetActive(false);
+            rightUI.SetActive(false);
         }
 
         private void Update()
         {
+            if (screenPositions.Count == 0)
+                return;
+            
             CheckPositions();
             UpdateUI();
+        }
+
+        public void Add(Transform target)
+        {
+            screenPositions.Add(new TargetScreenInfo(target));
+        }
+
+        public void Remove(Transform target)
+        {
+            if (screenPositions.Count == 0)
+                return;
+            
+            List<TargetScreenInfo> itemsToRemove = screenPositions.Where(targetScreenInfo 
+                => targetScreenInfo.target == target).ToList();
+            
+            foreach (TargetScreenInfo item in itemsToRemove) 
+                screenPositions.Remove(item);
         }
 
         private void CheckPositions()
@@ -38,7 +61,7 @@ namespace Environment
             for (int i = 0; i < screenPositions.Count; i++)
             {
                 TargetScreenInfo targetScreenInfo = screenPositions[i];
-                Vector3 screenPoint = mainCamera.WorldToScreenPoint(targetScreenInfo.target.position);
+                Vector3 screenPoint = _mainCamera.WorldToScreenPoint(targetScreenInfo.target.position);
 
                 ScreenPosition position;
 
@@ -83,7 +106,7 @@ namespace Environment
 
             leftUI.SetActive(l);
             rightUI.SetActive(r);
-
+            
             ApplyProgress(l, leftUI, ScreenPosition.OUTSIDE_LEFT);
             ApplyProgress(r, rightUI, ScreenPosition.OUTSIDE_RIGHT);
         }
